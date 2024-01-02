@@ -72,8 +72,6 @@ class _MyHomePageState extends State<MyHomePage>{
       MaterialPageRoute(builder: (context){
         return AddDogFormPage();
       })
-
-          
     );
     if (newDog != null){
       setState(() {

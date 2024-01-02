@@ -41,7 +41,7 @@ class _AddDogFormPageState extends State<AddDogFormPage> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(bottom: 8),
+                padding: const EdgeInsets.only(bottom: 8),
                 child: TextField(
                   controller: locationController,
                   onChanged: (v){ locationController.text =v; },
@@ -74,9 +74,14 @@ class _AddDogFormPageState extends State<AddDogFormPage> {
     );
   }
 
-  void submitPup(BuildContext context){
+  void submitPup(context){
     if(nameController.text.isEmpty){
-      print('Dogs need names');
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            backgroundColor: Colors.redAccent,
+            content: Text('Pups neeed names!'),
+          ),
+      );
     }else{
       var newDog = Dog(nameController.text, locationController.text, descriptionController.text);
       Navigator.of(context).pop(newDog);
